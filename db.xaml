@@ -1,0 +1,494 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="db" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1080,5314" sap2010:WorkflowViewState.IdRef="db_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="48">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="db" sap:VirtualizedContainerService.HintSize="1090,4572" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:DatabaseConnection" Name="con" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt" />
+      <Variable x:TypeArguments="x:String" Name="txt" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:DatabaseConnect DatabaseConnection="[con]" DisplayName="Connect" sap:VirtualizedContainerService.HintSize="1048,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="System.Data.SqlClient" ConnectionString="Data Source=aaitportal.database.windows.net;Initial Catalog=AAITPORTAL;User ID=aaitportal;Password=AA@itportal" />
+    <ui:DatabaseConnect DatabaseConnection="[con]" DisplayName="Connect" sap:VirtualizedContainerService.HintSize="1048,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="Data Source=aaitportal.database.windows.net;Initial Catalog=AAITPORTAL;User ID=aaitportal;Password=AA@itportal" />
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt]" DisplayName="Execute Query" ExistingDbConnection="[con]" sap:VirtualizedContainerService.HintSize="1048,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="Select * from certificates where DaysLeft ='0' ">
+      <ui:ExecuteQuery.Parameters>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:ExecuteQuery.Parameters>
+    </ui:ExecuteQuery>
+    <ui:WriteRange AddHeaders="True" DataTable="[dt]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="1048,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A1" WorkbookPath="a.xlsx" />
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dt]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="1048,3744" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="998,3596" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="956,22" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="iexplore" />
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="956,3442" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <TryCatch.Try>
+                <ui:OpenBrowser BrowserType="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="918,3215" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[row(1).ToString]">
+                  <ui:OpenBrowser.Body>
+                    <ActivityAction x:TypeArguments="x:Object">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="884,3114" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="issuedto" />
+                          <Variable x:TypeArguments="x:String" Name="issuedby" />
+                          <Variable x:TypeArguments="x:String" Name="validity" />
+                          <Variable x:TypeArguments="x:String" Name="valid_date" />
+                          <Variable x:TypeArguments="s:String[]" Name="arrayofdates" />
+                          <Variable x:TypeArguments="x:String" Name="newvalidate" />
+                          <Variable x:TypeArguments="x:String" Name="startdate" />
+                          <Variable x:TypeArguments="x:String" Name="Enddate" />
+                          <Variable x:TypeArguments="s:DateTime" Name="enddatee" />
+                          <Variable x:TypeArguments="x:Int32" Name="differencedays" />
+                          <Variable x:TypeArguments="x:String" Name="certificatename" />
+                          <Variable x:TypeArguments="x:Boolean" Name="ele" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="842,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button'" sap:VirtualizedContainerService.HintSize="842,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bdb686ab-5644-46e3-b506-9eb41c6bd976" InformativeScreenshot="6dd26b939bbc4755d1d8d3e192436e2d" Selector="&lt;wnd app='iexplore.exe' cls='IEFrame' title='*Internet Explor*' /&gt;&lt;wnd cls='Address Band Root' title='Address Bar' /&gt;&lt;wnd cls='ToolbarWindow32' title='Page Control' /&gt;&lt;ctrl name='Page Control' role='tool bar' /&gt;&lt;ctrl role='push button' idx='3' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <Delay mva:VisualBasic.Settings="{x:Null}" DisplayName="Delay 10 seconds" Duration="00:00:07" sap:VirtualizedContainerService.HintSize="842,22" sap2010:WorkflowViewState.IdRef="Delay_1">
+                          <TextExpression.Namespaces>
+                            <sco:Collection x:TypeArguments="x:String">
+                              <x:String>System.Activities</x:String>
+                              <x:String>System.Activities.Statements</x:String>
+                              <x:String>System.Activities.Expressions</x:String>
+                              <x:String>System.Activities.Validation</x:String>
+                              <x:String>System.Activities.XamlIntegration</x:String>
+                              <x:String>Microsoft.VisualBasic.Activities</x:String>
+                              <x:String>System</x:String>
+                              <x:String>System.Collections.Generic</x:String>
+                              <x:String>System.Data</x:String>
+                              <x:String>System.Diagnostics</x:String>
+                              <x:String>System.IO</x:String>
+                              <x:String>System.Linq</x:String>
+                              <x:String>System.Management.Automation</x:String>
+                              <x:String>System.Net.Mail</x:String>
+                              <x:String>System.Xml</x:String>
+                              <x:String>System.Xml.Linq</x:String>
+                              <x:String>UiPath.Library</x:String>
+                              <x:String>System.Windows.Markup</x:String>
+                            </sco:Collection>
+                          </TextExpression.Namespaces>
+                          <TextExpression.References>
+                            <sco:Collection x:TypeArguments="AssemblyReference">
+                              <AssemblyReference>System.Activities</AssemblyReference>
+                              <AssemblyReference>mscorlib</AssemblyReference>
+                              <AssemblyReference>System.Data</AssemblyReference>
+                              <AssemblyReference>System</AssemblyReference>
+                              <AssemblyReference>System.Core</AssemblyReference>
+                              <AssemblyReference>System.Management.Automation</AssemblyReference>
+                              <AssemblyReference>System.Xml</AssemblyReference>
+                              <AssemblyReference>System.Xml.Linq</AssemblyReference>
+                              <AssemblyReference>UiPath.Library</AssemblyReference>
+                              <AssemblyReference>PresentationFramework</AssemblyReference>
+                              <AssemblyReference>WindowsBase</AssemblyReference>
+                              <AssemblyReference>PresentationCore</AssemblyReference>
+                              <AssemblyReference>System.Xaml</AssemblyReference>
+                            </sco:Collection>
+                          </TextExpression.References>
+                          <sap2010:WorkflowViewState.ViewStateManager>
+                            <sap2010:ViewStateManager>
+                              <sap2010:ViewStateData sap:VirtualizedContainerService.HintSize="200,22" Id="Delay_1" />
+                            </sap2010:ViewStateManager>
+                          </sap2010:WorkflowViewState.ViewStateManager>
+                        </Delay>
+                        <Parallel sap:VirtualizedContainerService.HintSize="842,152" sap2010:WorkflowViewState.IdRef="Parallel_1">
+                          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Click 'link  View certificates'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d56f16f9-2583-447b-96f6-e99c6df876c4" InformativeScreenshot="dfd476fe47db01f0c558bf9c7ae3fabe" Selector="&lt;wnd app='iexplore.exe' cls='Flyout' title='Security report' /&gt;&lt;wnd aaname='Website Identification' cls='DirectUIHWND' idx='1' /&gt;&lt;ctrl name='View certificates' role='link' /&gt;" WaitForReady="COMPLETE">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bdb686ab-5644-46e3-b506-9eb41c6bd976" InformativeScreenshot="6dd26b939bbc4755d1d8d3e192436e2d" Selector="&lt;wnd app='iexplore.exe' cls='IEFrame' title='*Internet Explor*' /&gt;&lt;wnd cls='Address Band Root' title='Address Bar' /&gt;&lt;wnd cls='ToolbarWindow32' title='Page Control' /&gt;&lt;ctrl name='Page Control' role='tool bar' /&gt;&lt;ctrl role='push button' idx='3' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                        </Parallel>
+                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'RICHEDIT50W'" sap:VirtualizedContainerService.HintSize="842,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="70eb1281-c2e9-419e-a45e-eb26c27c0ce1" InformativeScreenshot="15bb0546dc5676251749480dd91a1a84" Selector="&lt;wnd app='iexplore.exe' cls='#32770' title='Certificate' /&gt;&lt;wnd cls='#32770' title='General' /&gt;&lt;wnd ctrlid='105' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="x:String">[certificatename]</OutArgument>
+                          </ui:GetValue.Value>
+                        </ui:GetValue>
+                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'RICHEDIT50W'" sap:VirtualizedContainerService.HintSize="842,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="abdd6f80-d119-4b30-8258-7371806843c5" InformativeScreenshot="a3f16e0f4ba42cf566d94b0a684377fa" Selector="&lt;wnd app='iexplore.exe' cls='#32770' title='Certificate' /&gt;&lt;wnd cls='#32770' title='General' /&gt;&lt;wnd ctrlid='106' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="x:String">[issuedby]</OutArgument>
+                          </ui:GetValue.Value>
+                        </ui:GetValue>
+                        <Assign sap:VirtualizedContainerService.HintSize="842,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[issuedby]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[issuedby.Replace("'","").ToString]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'RICHEDIT50W'" sap:VirtualizedContainerService.HintSize="842,106" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a916b104-6911-40c6-aa9f-bb3ca66f1958" InformativeScreenshot="665a8c0ad22c7178b7e2e94d2ec13d52" Selector="&lt;wnd app='iexplore.exe' cls='#32770' title='Certificate' /&gt;&lt;wnd cls='#32770' title='General' /&gt;&lt;wnd ctrlid='115' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="x:String">[validity]</OutArgument>
+                          </ui:GetValue.Value>
+                        </ui:GetValue>
+                        <Assign sap:VirtualizedContainerService.HintSize="842,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[valid_date]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[validity.Replace("Valid from","").Trim]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="842,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[newvalidate]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[valid_date.Replace("?","").Trim]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="842,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="s:String[]">[arrayofdates]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="s:String[]">[newvalidate.Split({"to"},StringSplitOptions.None)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="842,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[startdate]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[arrayofdates(0)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="842,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[Enddate]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[arrayofdates(1)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="842,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[differencedays]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[(Convert.ToDateTime(Enddate)-DateTime.Now).Days]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="842,51" sap2010:WorkflowViewState.IdRef="CommentOut_16">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Non Query" ExistingDbConnection="[con]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_2" Sql="[&quot;update certificates set CertificateName='&quot;+certificatename+&quot;',IssuedBy='&quot;+issuedby+&quot;',ValidTo='04-01-2020',DaysLeft='50' where id='2'&quot;]">
+                                <ui:ExecuteNonQuery.Parameters>
+                                  <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                                </ui:ExecuteNonQuery.Parameters>
+                              </ui:ExecuteNonQuery>
+                            </Sequence>
+                          </ui:CommentOut.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:CommentOut>
+                        <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Non Query" ExistingDbConnection="[con]" sap:VirtualizedContainerService.HintSize="842,88" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_3" Sql="[&quot;update certificates set CertificateName='&quot;+certificatename+&quot;',IssuedBy='&quot;+issuedby+&quot;',ValidTo='&quot;+Enddate+&quot;',DaysLeft='&quot;+differencedays.ToString+&quot;' where id='&quot;+ row(0).ToString+&quot;'&quot;]">
+                          <ui:ExecuteNonQuery.Parameters>
+                            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                          </ui:ExecuteNonQuery.Parameters>
+                        </ui:ExecuteNonQuery>
+                        <If Condition="[differencedays&lt;=15]" sap:VirtualizedContainerService.HintSize="842,1203" sap2010:WorkflowViewState.IdRef="If_3">
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="418,1056" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Non Query" ExistingDbConnection="[con]" sap:VirtualizedContainerService.HintSize="376,88" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[&quot;update certificates set CertificateName='&quot;+certificatename+&quot;',IssuedBy='&quot;+issuedby+&quot;',ValidTo='&quot;+Enddate+&quot;',DaysLeft='&quot;+differencedays.ToString+&quot;' where id='&quot;+ row(0).ToString+&quot;'&quot;]">
+                                <ui:ExecuteNonQuery.Parameters>
+                                  <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                                </ui:ExecuteNonQuery.Parameters>
+                              </ui:ExecuteNonQuery>
+                              <Sequence sap:VirtualizedContainerService.HintSize="376,836" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Name="text" />
+                                  <Variable x:TypeArguments="x:String" Name="text1" />
+                                  <Variable x:TypeArguments="x:String" Name="text2" />
+                                  <Variable x:TypeArguments="x:String" Name="text3" />
+                                  <Variable x:TypeArguments="x:String" Name="text4" />
+                                  <Variable x:TypeArguments="x:String" Name="text5" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[text]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">["&lt;html&gt;&lt;head&gt;&lt;style&gt;table, th, td{border:1px solid black; text-align : left}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;br&gt;Hi Team,&lt;/br&gt;&lt;br&gt;&lt;br&gt;The SSL certificate is about to expire for the below link. Please update its SSL certificate before it gets expired.&lt;/br&gt;&lt;br&gt;&lt;br&gt;&lt;table style=""table-layout:fixed;"", allign :left&gt;&lt;tr&gt;&lt;th&gt;Site Link&lt;/th&gt;&lt;th&gt;test1&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;Certificate Name&lt;/th&gt;&lt;th&gt;Rashmi&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;Validity End Date&lt;/th&gt;&lt;th&gt;Smriti&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;Days Left&lt;/th&gt;&lt;th&gt;Jagriti&lt;/th&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;/br&gt;&lt;br&gt;Thank You,&lt;/br&gt;&lt;br&gt;Robot&lt;/br&gt;&lt;/body&gt;&lt;/html&gt;"]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[text1]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[text.Replace("test1",row(1).ToString)]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[text2]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[text1.Replace("Rashmi",issuedby)]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[text3]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[text2.Replace("Jagriti",differencedays.ToString)]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[text4]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[text3.Replace("Smriti",Enddate)]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[text4]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" IsBodyHtml="True" IsDraft="False" Subject="SSL Certificate Reminder" To="jagriti.singh@zensar.com">
+                                  <ui:SendOutlookMail.Files>
+                                    <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                  </ui:SendOutlookMail.Files>
+                                </ui:SendOutlookMail>
+                                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[&quot;mail sent&quot;]" />
+                              </Sequence>
+                            </Sequence>
+                          </If.Then>
+                        </If>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:OpenBrowser.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:OpenBrowser>
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="922,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ActivityAction x:TypeArguments="s:Exception">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                    </ActivityAction.Argument>
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[exception.ToString]" />
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+            </TryCatch>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="1048,215" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="http://aasslcertpoc.azurewebsites.net/">
+      <ui:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_13">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2" />
+          </Sequence>
+        </ActivityAction>
+      </ui:OpenBrowser.Body>
+    </ui:OpenBrowser>
+  </Sequence>
+</Activity>
